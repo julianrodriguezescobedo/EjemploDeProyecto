@@ -52,10 +52,19 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,6 +96,14 @@
     <ProjectReference Include="..\EjemploDeProyecto.BLL\EjemploDeProyecto.BLL.csproj">
       <Project>{5bad2043-00d0-4c1e-960f-2738859c26e1}</Project>
       <Name>EjemploDeProyecto.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EjemploDeProyecto.Framework\EjemploDeProyecto.Framework.csproj">
+      <Project>{75EFC7C7-C7A5-4E91-998C-4573DE169CD9}</Project>
+      <Name>EjemploDeProyecto.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EjemploDeProyecto.Interfaces\EjemploDeProyecto.Interfaces.csproj">
+      <Project>{D1DBBE4E-2739-496E-A304-5041A7FB2D41}</Project>
+      <Name>EjemploDeProyecto.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

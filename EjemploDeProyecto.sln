@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.8.34330.188
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33927.289
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploDeProyecto.UI", "EjemploDeProyecto.UI\EjemploDeProyecto.UI.csproj", "{66461604-6E30-447A-AE41-7FC8DF958910}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploDeProyecto.DAL", "EjemploDeProyecto.DAL\EjemploDeProyecto.DAL.csproj", "{2D8CF4AF-27C3-4654-A530-2D2075EFD495}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploDeProyecto.BE", "EjemploDeProyecto.BE\EjemploDeProyecto.BE.csproj", "{8A83B879-2EF8-43BB-8355-E47398CA5926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploDeProyecto.Framework", "EjemploDeProyecto.Framework\EjemploDeProyecto.Framework.csproj", "{75EFC7C7-C7A5-4E91-998C-4573DE169CD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EjemploDeProyecto.Interfaces", "EjemploDeProyecto.Interfaces\EjemploDeProyecto.Interfaces.csproj", "{D1DBBE4E-2739-496E-A304-5041A7FB2D41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{8A83B879-2EF8-43BB-8355-E47398CA5926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A83B879-2EF8-43BB-8355-E47398CA5926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A83B879-2EF8-43BB-8355-E47398CA5926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75EFC7C7-C7A5-4E91-998C-4573DE169CD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75EFC7C7-C7A5-4E91-998C-4573DE169CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75EFC7C7-C7A5-4E91-998C-4573DE169CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75EFC7C7-C7A5-4E91-998C-4573DE169CD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1DBBE4E-2739-496E-A304-5041A7FB2D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1DBBE4E-2739-496E-A304-5041A7FB2D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1DBBE4E-2739-496E-A304-5041A7FB2D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1DBBE4E-2739-496E-A304-5041A7FB2D41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
