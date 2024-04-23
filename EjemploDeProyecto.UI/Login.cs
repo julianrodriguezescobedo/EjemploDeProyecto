@@ -1,4 +1,5 @@
 ﻿using EjemploDeProyecto.BE;
+using EjemploDeProyecto.BLL;
 using EjemploDeProyecto.Framework;
 using EjemploDeProyecto.Interfaces;
 using System;
@@ -15,6 +16,8 @@ namespace EjemploDeProyecto.UI
 {
     public partial class Login : Form
     {
+        BitacoraBLL bitacoraBLL = new BitacoraBLL();
+
         public Login()
         {
             InitializeComponent();
@@ -22,15 +25,27 @@ namespace EjemploDeProyecto.UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            //Validaciones...
+            try
+            {
+                //Validaciones...
 
-            //Comprobar credenciales...
+                //Comprobar credenciales...
 
-            IUser user = new User() { Username = txtUsername.Text, Password = txtPassword.Text };
+                //Bitácora en BLL al momento de validar las credenciales
 
-            Sesion.Login(user);
+                IUser user = new User() { Username = txtUsername.Text, Password = txtPassword.Text };
 
-            MessageBox.Show("Sesión iniciada por: " + Sesion.ObtenerUsername());
+                Sesion.Login(user);
+
+                bitacoraBLL.Add(new Bitacora() { Tipo = BitacoraTipo.INFO, Usuario = user.Username, Mensaje = "Inicio de sesión." });
+
+                MessageBox.Show("Sesión iniciada por: " + Sesion.ObtenerUsername());
+            }
+            catch (Exception ex)
+            {
+                bitacoraBLL.Add(new Bitacora() { Tipo = BitacoraTipo.ERROR, Usuario = Sesion.ObtenerUsername(), Mensaje = ex.Message.ToString() });
+                MessageBox.Show(ex.Message.ToString(), "ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
     }
 }

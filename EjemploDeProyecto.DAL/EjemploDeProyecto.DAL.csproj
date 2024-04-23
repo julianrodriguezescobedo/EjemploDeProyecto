@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitacoraDAL.cs" />
     <Compile Include="PersonaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,6 +51,14 @@
       <Project>{8a83b879-2ef8-43bb-8355-e47398ca5926}</Project>
       <Name>EjemploDeProyecto.BE</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EjemploDeProyecto.Interfaces\EjemploDeProyecto.Interfaces.csproj">
+      <Project>{D1DBBE4E-2739-496E-A304-5041A7FB2D41}</Project>
+      <Name>EjemploDeProyecto.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQL\Script.sql" />
+    <Content Include="SQL\Bitacora_Add.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
