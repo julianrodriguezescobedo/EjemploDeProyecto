@@ -12,7 +12,8 @@ namespace EjemploDeProyecto.Interfaces
 
     public enum BitacoraTipo
     {
-        INFO,
-        ERROR
+        INFO = 1,
+        ERROR = 2,
+        ALL = 3
     }
 }

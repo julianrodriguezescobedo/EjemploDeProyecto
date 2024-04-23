@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBitacora.cs" />
+    <Compile Include="IBitacoraFiltered.cs" />
+    <Compile Include="IBitacoraFilters.cs" />
+    <Compile Include="IBitacorasFiltered.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IUser.cs" />

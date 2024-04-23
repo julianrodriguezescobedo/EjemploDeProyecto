@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Criptografia.cs" />
     <Compile Include="Sesion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

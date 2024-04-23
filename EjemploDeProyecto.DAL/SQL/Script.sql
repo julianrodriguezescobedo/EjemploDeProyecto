@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [IS]    Script Date: 23/4/2024 12:16:18 ******/
+/****** Object:  Database [IS]    Script Date: 23/4/2024 18:11:00 ******/
 CREATE DATABASE [IS]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [IS] SET QUERY_STORE = OFF
 GO
 USE [IS]
 GO
-/****** Object:  Table [dbo].[Bitacora]    Script Date: 23/4/2024 12:16:19 ******/
+/****** Object:  Table [dbo].[Bitacora]    Script Date: 23/4/2024 18:11:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -88,7 +88,7 @@ GO
 CREATE TABLE [dbo].[Bitacora](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Fecha] [datetime] NOT NULL,
-	[Tipo] [varchar](50) NOT NULL,
+	[Tipo] [int] NOT NULL,
 	[Usuario] [varchar](50) NOT NULL,
 	[Mensaje] [varchar](max) NOT NULL,
  CONSTRAINT [PK_Bitacora] PRIMARY KEY CLUSTERED 
@@ -97,13 +97,13 @@ CREATE TABLE [dbo].[Bitacora](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[BitacoraTipo]    Script Date: 23/4/2024 12:16:19 ******/
+/****** Object:  Table [dbo].[BitacoraTipo]    Script Date: 23/4/2024 18:11:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[BitacoraTipo](
-	[Code] [varchar](50) NOT NULL,
+	[Code] [int] NOT NULL,
 	[Nombre] [varchar](50) NOT NULL,
  CONSTRAINT [PK_BitacoraTipo] PRIMARY KEY CLUSTERED 
 (
@@ -111,7 +111,7 @@ CREATE TABLE [dbo].[BitacoraTipo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 23/4/2024 12:16:19 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 23/4/2024 18:11:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -135,14 +135,69 @@ REFERENCES [dbo].[User] ([Username])
 GO
 ALTER TABLE [dbo].[Bitacora] CHECK CONSTRAINT [FK_Bitacora_User]
 GO
-/****** Object:  StoredProcedure [dbo].[Bitacora_Add]    Script Date: 23/4/2024 12:16:19 ******/
+/****** Object:  StoredProcedure [dbo].[Bitacora_Add]    Script Date: 23/4/2024 18:11:01 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE   proc [dbo].[Bitacora_Add]	@tipo varchar(50), @usuario varchar(50), @mensaje varchar(max) as
+CREATE   proc [dbo].[Bitacora_Add]	@tipo int, @usuario varchar(50), @mensaje varchar(max) as
 
 insert Bitacora values (getdate(), @tipo, @usuario, @mensaje)
+GO
+/****** Object:  StoredProcedure [dbo].[Bitacora_GetAllFiltered]    Script Date: 23/4/2024 18:11:01 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE proc [dbo].[Bitacora_GetAllFiltered] @total bit, @page int, @perPage int, @usuario nvarchar(50), @desde datetime, @hasta datetime, @tipo int, @like nvarchar(255) as
+begin
+	if @desde is null select @desde = getdate()
+	if @hasta is null select @hasta = getdate()
+	
+	select @like = '%' + isnull(@like,'') + '%'
+
+	select @page = @page -1
+
+	if @total = 1
+	begin
+		select	'Page' = @page + 1,
+				'PerPage' = @perPage,
+				'Total' = count(*),
+				'TotalPages' = ceiling(convert(float,count(*)) / convert(float,@perPage))
+		from	Bitacora a 
+		where	(a.Usuario = @usuario or @usuario is null)
+				and convert(date,a.Fecha) between convert(date,@desde) and convert(date,@hasta)
+				and (a.Tipo = @tipo or @tipo = 3 or @tipo is null)
+				and 
+				(
+					a.Usuario like @like
+					or a.Mensaje like @like
+				)
+	end
+	else
+	begin
+		select	*
+		from
+		(
+			select	ROW_NUMBER() OVER (order by a.Fecha) as [Index], 
+					a.Id,
+					a.Usuario,
+					a.Fecha,
+					a.Tipo,
+					a.Mensaje
+			from	Bitacora a 
+			where	(a.Usuario = @usuario or @usuario is null)
+					and convert(date,a.Fecha) between convert(date,@desde) and convert(date,@hasta)
+					and (a.Tipo = @tipo or @tipo = 3 or @tipo is null)
+					and 
+					(
+						a.Usuario like @like
+						or a.Mensaje like @like
+					)
+		) z
+		where z.[Index] between (@perPage * @page) + 1 AND (@perPage * @page) + @perPage
+	end
+end
 GO
 USE [master]
 GO

@@ -45,6 +45,7 @@
     <Compile Include="BitacoraDAL.cs" />
     <Compile Include="PersonaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="SQL\Bitacora_GellAllFiltered.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EjemploDeProyecto.BE\EjemploDeProyecto.BE.csproj">

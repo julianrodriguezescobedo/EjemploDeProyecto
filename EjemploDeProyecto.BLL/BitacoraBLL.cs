@@ -1,5 +1,6 @@
 ﻿using EjemploDeProyecto.BE;
 using EjemploDeProyecto.DAL;
+using EjemploDeProyecto.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,19 @@ namespace EjemploDeProyecto.BLL
             try
             {
                 bitacoraDAL.Add(bitacora);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public IBitacorasFiltered GetAllFiltered(int page, int perPage, IBitacoraFilters filters)
+        {
+            try
+            {
+                return bitacoraDAL.GetAllFiltered(page, perPage, filters);
             }
             catch (Exception)
             {
