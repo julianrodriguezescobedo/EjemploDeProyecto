@@ -45,6 +45,9 @@
             // 
             // dgvBitacora
             // 
+            this.dgvBitacora.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBitacora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBitacora.Location = new System.Drawing.Point(23, 112);
             this.dgvBitacora.Name = "dgvBitacora";
@@ -57,7 +60,7 @@
             this.dtpDesde.Location = new System.Drawing.Point(23, 40);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(200, 20);
-            this.dtpDesde.TabIndex = 1;
+            this.dtpDesde.TabIndex = 0;
             // 
             // label1
             // 
@@ -82,7 +85,7 @@
             this.dtpHasta.Location = new System.Drawing.Point(229, 40);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(200, 20);
-            this.dtpHasta.TabIndex = 3;
+            this.dtpHasta.TabIndex = 1;
             // 
             // cbBitacoraTipo
             // 
@@ -91,23 +94,25 @@
             this.cbBitacoraTipo.Location = new System.Drawing.Point(435, 39);
             this.cbBitacoraTipo.Name = "cbBitacoraTipo";
             this.cbBitacoraTipo.Size = new System.Drawing.Size(200, 21);
-            this.cbBitacoraTipo.TabIndex = 5;
+            this.cbBitacoraTipo.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(432, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Desde";
+            this.label3.Text = "Tipo";
             // 
             // btnFiltrar
             // 
+            this.btnFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFiltrar.Location = new System.Drawing.Point(23, 497);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(765, 23);
-            this.btnFiltrar.TabIndex = 7;
+            this.btnFiltrar.TabIndex = 6;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
             this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
@@ -117,7 +122,7 @@
             this.txtTexto.Location = new System.Drawing.Point(23, 86);
             this.txtTexto.Name = "txtTexto";
             this.txtTexto.Size = new System.Drawing.Size(199, 20);
-            this.txtTexto.TabIndex = 8;
+            this.txtTexto.TabIndex = 3;
             // 
             // label4
             // 
@@ -130,20 +135,22 @@
             // 
             // btnAnterior
             // 
+            this.btnAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAnterior.Location = new System.Drawing.Point(23, 468);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(238, 23);
-            this.btnAnterior.TabIndex = 10;
+            this.btnAnterior.TabIndex = 4;
             this.btnAnterior.Text = "<---";
             this.btnAnterior.UseVisualStyleBackColor = true;
             this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnSiguiente
             // 
+            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSiguiente.Location = new System.Drawing.Point(550, 468);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(238, 23);
-            this.btnSiguiente.TabIndex = 11;
+            this.btnSiguiente.TabIndex = 5;
             this.btnSiguiente.Text = "--->";
             this.btnSiguiente.UseVisualStyleBackColor = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
